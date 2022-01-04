@@ -1,6 +1,7 @@
 package multiplications;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Calculator {
 	
@@ -36,9 +37,21 @@ public class Calculator {
 		}
 	}
 	
+	public void shuffleOperations() {
+		Random random = new Random();
+		for (int i = operations.size() - 1; i >= 0; i--) {
+			int randomInt = random.nextInt(i + 1);
+			String temp = operations.get(randomInt);
+			operations.set(randomInt, operations.get(i));
+			operations.set(i, temp);
+		}
+		
+	}
+	
 	public void printOperations() {
 		for (int i = 0; i < operations.size(); i++) {
 			System.out.println(operations.get(i));
 		}
 	}
+	
 }
