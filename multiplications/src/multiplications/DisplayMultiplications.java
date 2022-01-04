@@ -9,8 +9,8 @@ public class DisplayMultiplications {
 		int[] leftSelections = {4, 5, 11, 12};
 		Multiplicator multiplicator = new Multiplicator(leftSelections, 1, 12);
 		multiplicator.shuffleOperations();
-		multiplicator.printOperations();
-		multiplicator.printOperationAnswers();
+		multiplicator.printOperations(true);
+		multiplicator.printOperationAnswers(true);
 	}
 
 }

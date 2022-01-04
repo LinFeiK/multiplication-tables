@@ -37,14 +37,20 @@ public class Multiplicator {
 		calculateResults();
 	}
 	
-	public void printOperations() {
+	public void printOperations(boolean isDisplayNumbers) {
 		for (int i = 0; i < operations.size(); i++) {
+			if (isDisplayNumbers) {
+				System.out.print(i + 1 + ". ");
+			}
 			System.out.println(operations.get(i));
 		}
 	}
 	
-	public void printOperationAnswers() {
+	public void printOperationAnswers(boolean isDisplayNumbers) {
 		for (int i = 0; i < operationAnswers.size(); i++) {
+			if (isDisplayNumbers) {
+				System.out.print(i + 1 + ". ");
+			}
 			System.out.println(operationAnswers.get(i));
 		}
 	}
