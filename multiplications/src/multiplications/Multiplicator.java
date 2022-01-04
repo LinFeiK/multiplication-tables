@@ -18,6 +18,13 @@ public class Multiplicator {
 		setUpOperations();
 	}
 	
+	// use for specific multiplication tables that don't fall in a range
+	public Multiplicator(int[] leftSelections, int rightMin, int rightMax) {
+		setUpLeftOperands(leftSelections);
+		setUpRightOperands(rightMin, rightMax);
+		setUpOperations();
+	}
+	
 	public void shuffleOperations() {
 		Random random = new Random();
 		for (int i = operations.size() - 1; i >= 0; i--) {
@@ -46,6 +53,13 @@ public class Multiplicator {
 		leftOperands = new ArrayList<>();
 		for (int i = min; i <= max; i++) {
 			leftOperands.add(i);
+		}
+	}
+	
+	private void setUpLeftOperands(int[] selections) {
+		leftOperands = new ArrayList<>();
+		for (int i = 0; i < selections.length; i++) {
+			leftOperands.add(selections[i]);
 		}
 	}
 	
