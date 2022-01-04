@@ -4,9 +4,10 @@ public class DisplayMultiplications {
 
 	public static void main(String[] args) {
 		
-		Calculator calculator = new Calculator();
-		calculator.shuffleOperations();
-		calculator.printOperations();
+		Multiplicator multiplicator = new Multiplicator();
+		multiplicator.shuffleOperations();
+		multiplicator.printOperations();
+		multiplicator.printOperationAnswers();
 	}
 
 }
