@@ -10,8 +10,11 @@ public class Multiplicator {
 	private ArrayList<String> operations;
 	private ArrayList<String> operationAnswers;
 	
-	public Multiplicator() {
-		setUpOperands(1, 12);
+	// left min/max: range of multiplication table numbers (inclusive)
+	// right min/max: what range of numbers the left numbers should be multiplied by (inclusive)
+	public Multiplicator(int leftMin, int leftMax, int rightMin, int rightMax) {
+		setUpLeftOperands(leftMin, leftMax);
+		setUpRightOperands(rightMin, rightMax);
 		setUpOperations();
 	}
 	
@@ -39,12 +42,14 @@ public class Multiplicator {
 		}
 	}
 	
-	private void setUpOperands(int min, int max) {
+	private void setUpLeftOperands(int min, int max) {
 		leftOperands = new ArrayList<>();
 		for (int i = min; i <= max; i++) {
 			leftOperands.add(i);
 		}
-		
+	}
+	
+	private void setUpRightOperands(int min, int max) {		
 		rightOperands = new ArrayList<>();
 		for (int i = min; i <= max; i++) {
 			rightOperands.add(i);
