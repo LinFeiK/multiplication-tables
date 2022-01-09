@@ -10,21 +10,22 @@ public class Multiplicator {
 	private ArrayList<String> operations;
 	private ArrayList<String> operationAnswers;
 	
-	// left min/max: range of multiplication table numbers (inclusive)
-	// right min/max: what range of numbers the left numbers should be multiplied by (inclusive)
+	// Left min/max: range of multiplication table numbers (inclusive)
+	// Right min/max: what range of numbers the left numbers should be multiplied by (inclusive)
 	public Multiplicator(int leftMin, int leftMax, int rightMin, int rightMax) {
 		setUpLeftOperands(leftMin, leftMax);
 		setUpRightOperands(rightMin, rightMax);
 		setUpOperations();
 	}
 	
-	// use for specific multiplication tables that don't fall in a range
+	// Use for specific multiplication tables that don't fall in a range
 	public Multiplicator(int[] leftSelections, int rightMin, int rightMax) {
 		setUpLeftOperands(leftSelections);
 		setUpRightOperands(rightMin, rightMax);
 		setUpOperations();
 	}
 	
+	// Shuffle the operations so that they are not ordered
 	public void shuffleOperations() {
 		Random random = new Random();
 		for (int i = operations.size() - 1; i >= 0; i--) {
@@ -55,15 +56,19 @@ public class Multiplicator {
 		}
 	}
 	
+	// Use for a range of left operands
 	private void setUpLeftOperands(int min, int max) {
 		leftOperands = new ArrayList<>();
+		
 		for (int i = min; i <= max; i++) {
 			leftOperands.add(i);
 		}
 	}
 	
+	// Use for a subset of left operands that don't fall into a range
 	private void setUpLeftOperands(int[] selections) {
 		leftOperands = new ArrayList<>();
+		
 		for (int i = 0; i < selections.length; i++) {
 			leftOperands.add(selections[i]);
 		}
@@ -71,11 +76,13 @@ public class Multiplicator {
 	
 	private void setUpRightOperands(int min, int max) {		
 		rightOperands = new ArrayList<>();
+		
 		for (int i = min; i <= max; i++) {
 			rightOperands.add(i);
 		}
 	}
 	
+	// Populate operations given the left and right operands. Sample operation: "5 x 9 = "
 	private void setUpOperations() {
 		operations = new ArrayList<>();
 		
@@ -86,16 +93,19 @@ public class Multiplicator {
 		}
 	}
 	
+	// Populate operationAnswers with the expressions and their answers
 	private void calculateResults() {
 		operationAnswers = new ArrayList<>();
 		
 		for (int i = 0; i < operations.size(); i++) {
-			// sample operation: "n x m = "
+			// sample operation: "5 x 7 = "
 			String operation = operations.get(i);
 			int operationIndex = operation.indexOf(" x");
 			int equalSignIndex = operation.indexOf(" =");
 			int leftOperand = Integer.parseInt(operation.substring(0, operationIndex));
 			int rightOperand = Integer.parseInt(operation.substring(operationIndex + 3, equalSignIndex));
+			
+			// sample operationAnswer: "5 x 7 = 35"
 			operationAnswers.add(operations.get(i) + leftOperand * rightOperand);
 		}
 	}
